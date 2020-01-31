@@ -1,9 +1,9 @@
-import { getTokenDecodedFromRequest } from '../../auth/jwt';
-
 export const Query = {
-  getUser: async (obj, { token }, { req, db }) => {
-    const { id } = getTokenDecodedFromRequest(req);
-    const user = await db.User.findByPk(id);
+  getUser: async (obj, args, { db, decoded }) => {
+    if (!decoded) {
+      throw new Error('Authorization failed');
+    }
+    const user = await db.User.findByPk(decoded.id);
 
     if (!user) {
       throw new Error('Authorization failed');

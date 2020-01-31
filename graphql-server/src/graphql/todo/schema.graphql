@@ -4,3 +4,8 @@ type Todo {
   checked: Boolean!
   user: User!
 }
+
+type Mutation {
+  createTodo(title: String!, description: String!): Todo!
+  updateTodo(title: String!, description: String!, boo
+}

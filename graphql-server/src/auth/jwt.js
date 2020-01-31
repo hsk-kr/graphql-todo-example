@@ -4,20 +4,20 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 /**
- * If the token is invalid, throw error otherwise returns decoded.
+ * If the token is invalid, returns null otherwise returns decoded.
  * @param {string} token
  */
-export const verifyToken = token => {
+export const getUserFromToken = token => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     return decoded;
   } catch {
-    throw new Error('Failed to authenticate the token');
+    return null;
   }
 };
 
 /**
- * Finds the token from request and returns. if there is no Authorization in header, throw error.
+ * Finds the token from request and returns. if there is no Authorization in header, returns null.
  * @param {object} req
  */
 export const getTokenFromReq = req => {
@@ -26,9 +26,5 @@ export const getTokenFromReq = req => {
     return Authorization.replace(/bearer /i, '');
   }
 
-  throw new Error('Authorization failed');
-};
-
-export const getTokenDecodedFromRequest = req => {
-  return verifyToken(getTokenFromReq(req));
+  return null;
 };
