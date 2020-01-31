@@ -28,3 +28,14 @@ export const getTokenFromReq = req => {
 
   return null;
 };
+
+/**
+ * verify if decoded is null or doesn't have neccesary fields inside, if it's invalid throw Error.
+ * @param {string} decoded
+ */
+export const verifyDecoded = decoded => {
+  if (!decoded || !decoded.id) {
+    throw new Error('Authorization Failed');
+  }
+  return decoded;
+};

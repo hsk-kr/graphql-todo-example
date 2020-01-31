@@ -1,11 +1,24 @@
 type Todo {
+  id: Int!
   title: String!
   description: String!
   checked: Boolean!
   user: User!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  myTodos: [Todo!]!
 }
 
 type Mutation {
   createTodo(title: String!, description: String!): Todo!
-  updateTodo(title: String!, description: String!, boo
+  updateTodo(
+    id: Int!
+    title: String
+    description: String
+    checked: Boolean
+  ): Boolean!
+  deleteTodo(id: Int!): Boolean!
 }

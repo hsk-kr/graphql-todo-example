@@ -1,8 +1,8 @@
+import { verifyDecoded } from '../../auth/jwt';
+
 export const Query = {
   getUser: async (obj, args, { db, decoded }) => {
-    if (!decoded) {
-      throw new Error('Authorization failed');
-    }
+    verifyDecoded(decoded);
     const user = await db.User.findByPk(decoded.id);
 
     if (!user) {

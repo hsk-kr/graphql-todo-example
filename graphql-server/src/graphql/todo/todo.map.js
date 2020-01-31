@@ -1,3 +1,3 @@
 export const TodoMap = {
-  user: (obj, args, {db}) => db.user.findByPk(obj.userid)
+  user: (obj, args, { db }) => db.User.findByPk(obj.userid),
 };
