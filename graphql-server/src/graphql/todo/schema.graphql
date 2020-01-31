@@ -1,0 +1,6 @@
+type Todo {
+  title: String!
+  description: String!
+  checked: Boolean!
+  user: User!
+}

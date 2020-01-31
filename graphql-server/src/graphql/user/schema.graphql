@@ -1,0 +1,20 @@
+type User {
+  name: String!
+  email: String!
+  todos: [Todo!]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  getUser: User!
+}
+
+type Mutation {
+  signInWithGoogle(accessToken: String!): Authorization!
+}
+
+type Authorization {
+  user: User!
+  token: String!
+}
