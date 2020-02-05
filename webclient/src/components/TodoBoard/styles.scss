@@ -1,0 +1,39 @@
+.todo-board {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #2193b0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #6dd5ed,
+    #2193b0
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
+
+  .quick-menu {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 5em;
+    margin-right: 50px;
+    margin-bottom: 50px;
+
+    .fa-plus {
+      color: #c0392b;
+      &:hover {
+        cursor: pointer;
+        color: #e74c3c;
+      }
+    }
+  }
+}
+
+.todo-board-contextmenu {
+  position: absolute;
+  opacity: 0;
+  font-size: 0.9rem;
+  width: 200px;
+}

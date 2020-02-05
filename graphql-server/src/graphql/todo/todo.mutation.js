@@ -2,12 +2,14 @@ import { verifyDecoded } from '../../auth/jwt';
 import { Op } from 'sequelize';
 
 export const Mutation = {
-  createTodo: async (obj, { title, description }, { db, decoded }) => {
+  createTodo: async (obj, { title, description, x, y }, { db, decoded }) => {
     verifyDecoded(decoded);
 
     const newTodo = await db.Todo.create({
       title,
       description,
+      x: x,
+      y: y,
       userid: decoded.id,
     });
 

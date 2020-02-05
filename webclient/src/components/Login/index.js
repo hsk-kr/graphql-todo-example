@@ -1,15 +1,17 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, FormGroup } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-apollo';
 import './styles.scss';
 import GoogleAuth from '../GoogleAuth';
+import Loading from '../Loading';
 import { GOOGLE_CLIENT_ID } from '../../shared/constants';
 import { SIGNIN_WITH_GOOGLE } from './queries';
 
 function Login({ onLogin }) {
   const [gCli, setGcli] = useState(null);
   const [signIn, { data }] = useMutation(SIGNIN_WITH_GOOGLE);
+  const [loading, setLoading] = useState(true);
 
   if (data && data.signInWithGoogle) {
     const { token } = data.signInWithGoogle;
@@ -35,13 +37,20 @@ function Login({ onLogin }) {
       const user = info.length > 0 ? info[0] : null;
 
       if (gCli && user) {
+        setLoading(true);
         const { access_token } = user;
+        // request signIn to server
         signIn({ variables: { accessToken: access_token } });
+        // google logout
         gCli.signOut();
       }
     },
     [signIn]
   );
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <Container className="login-container text-center">
@@ -54,23 +63,29 @@ function Login({ onLogin }) {
       <Row>
         <Col>
           <Form className="login-form shadow rounded">
-            <FormGroup>
-              <img
-                src="./images/schedule.png"
-                alt="logo"
-                className="rounded logo"
-              />
-              <h1 className="inline">ToDo Login</h1>
-            </FormGroup>
-            <FormGroup>
-              <Button
-                color="danger"
-                className="pl-5 pr-5"
-                onClick={handleSignIn}
-              >
-                <i className="fa fa-google mr-3" /> Sign in with Google
-              </Button>
-            </FormGroup>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <FormGroup>
+                  <img
+                    src="./images/schedule.png"
+                    alt="logo"
+                    className="rounded logo"
+                  />
+                  <h1 className="inline">ToDo Login</h1>
+                </FormGroup>
+                <FormGroup>
+                  <Button
+                    color="danger"
+                    className="pl-5 pr-5"
+                    onClick={handleSignIn}
+                  >
+                    <i className="fa fa-google mr-3" /> Sign in with Google
+                  </Button>
+                </FormGroup>
+              </>
+            )}
           </Form>
         </Col>
       </Row>

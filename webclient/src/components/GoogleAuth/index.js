@@ -61,6 +61,7 @@ function GoogleAuth(props) {
       async: true,
       onload: onLoadGoogleApi,
     });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

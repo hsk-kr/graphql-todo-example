@@ -4,8 +4,14 @@ type Todo {
   description: String!
   checked: Boolean!
   user: User!
+  position: Position!
   createdAt: String!
   updatedAt: String!
+}
+
+type Position {
+  x: Int!
+  y: Int!
 }
 
 type Query {
@@ -13,12 +19,14 @@ type Query {
 }
 
 type Mutation {
-  createTodo(title: String!, description: String!): Todo!
+  createTodo(title: String!, description: String!, x: Int!, y: Int!): Todo!
   updateTodo(
     id: Int!
     title: String
     description: String
     checked: Boolean
+    x: Int
+    y: Int
   ): Boolean!
   deleteTodo(id: Int!): Boolean!
 }

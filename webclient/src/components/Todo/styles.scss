@@ -1,0 +1,73 @@
+.todo {
+  position: absolute;
+  opacity: 0;
+  width: 300px;
+  height: 300px;
+
+  .header {
+    height: 30px;
+    background-color: #ecf0f1;
+    display: flex;
+
+    .header-iconbar {
+      flex: 2;
+
+      .fa {
+        float: right;
+        font-size: 1.5em;
+        margin-right: 10px;
+        margin-top: 2px;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.btn-edit {
+          color: #27ae60;
+          margin-top: 3px;
+          margin-right: 5px;
+          &:hover {
+            color: #2ecc71;
+          }
+        }
+
+        &.btn-close {
+          color: #c0392b;
+          &:hover {
+            color: #e74c3c;
+          }
+        }
+      }
+    }
+
+    .draggable-header {
+      flex: 7;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .btn-check {
+    border-radius: 15px;
+    padding: 10px;
+
+    &.unchecked {
+      background-color: #e74c3c;
+    }
+
+    &.checked {
+      background-color: #2ecc71;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
+    .fa-check {
+      color: white;
+    }
+  }
+}

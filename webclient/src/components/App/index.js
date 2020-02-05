@@ -17,6 +17,7 @@ const App = () => {
         {isLogin ? (
           <TodoBoard
             onLogout={() => {
+              client.cache.reset();
               cookies.remove(COOKIE_TOKEN); // remove a token cookie
               reload(!_reload);
             }}
