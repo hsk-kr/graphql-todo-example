@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  webclient:
+    build:
+      context: ./webclient
+      dockerfile: C:\programming\graphql-todo-example\webclient\dockerfile
+    restart: always
+    depends_on:
+      - graphql_server
+    ports:
+      - 3000:3000
+  graphql_server:
+    build:
+      context: ./graphql-server
+      dockerfile: C:\programming\graphql-todo-example\graphql-server\dockerfile
+    restart: always
+    depends_on:
+      - maria
+    env_file:
+      - ./graphql-server/.env
+    ports:
+      - 4000:4000
+    links:
+      - maria:maria
+  maria:
+    image: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "password"
+      MYSQL_DATABASE: "socialexample"
+      MYSQL_ROOT_PASSWORD: "password"
