@@ -1,5 +1,7 @@
 # GraphQL Todo Example
 
+Only supports development.
+
 ## Setup
 
 ### Local
@@ -54,5 +56,4 @@
 
 
 ## Preview
-
-![Preview](https://github.com/hsk-kr/graphql-todo-example/blob/master/preview/preview.gif)
+![Preview](https://github.com/hsk-kr/graphql-todo-example/blob/master/screenshot/preview.gif?raw=true)
