@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
+import { JWT_EXPIRY_DATE } from '../../shared/constants';
 
 dotenv.config();
 
@@ -29,7 +30,9 @@ module.exports = (sequelize, DataTypes) => {
 
   // instance Methods
   User.prototype.generateToken = function() {
-    return jwt.sign({ id: this.id }, process.env.JWT_SECRET);
+    return jwt.sign({ id: this.id }, process.env.JWT_SECRET, {
+      expiresIn: JWT_EXPIRY_DATE,
+    });
   };
 
   return User;

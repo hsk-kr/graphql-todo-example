@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 
 // append Script Element to body
@@ -21,9 +21,10 @@ function GoogleAuth(props) {
 
     const updateSignInStatus = () => {
       // invoke currentUser to onChangeStatus method
-      props.onChangeStatus(
-        window.gapi.auth2.getAuthInstance().currentUser.get()
-      );
+      props.onChangeStatus({
+        gCli: window.gapi.auth2.getAuthInstance(),
+        data: window.gapi.auth2.getAuthInstance().currentUser.get(),
+      });
     };
 
     const initGoogleClient = () => {
@@ -60,6 +61,7 @@ function GoogleAuth(props) {
       async: true,
       onload: onLoadGoogleApi,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
@@ -72,4 +74,4 @@ GoogleAuth.propTypes = {
   scope: PropTypes.string,
 };
 
-export default GoogleAuth;
+export default memo(GoogleAuth);
