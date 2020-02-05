@@ -51,3 +51,8 @@
 - React
 - Bootstrap
 - Apollo
+
+
+## Preview
+
+![Preview](https://github.com/hsk-kr/graphql-todo-example/blob/master/preview/preview.gif)

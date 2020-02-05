@@ -40,9 +40,9 @@ const Todo = ({
       }
 
       if (hidden) {
-        todoRef.current.style.opacity = 0;
+        todoRef.current.style.visibility = 'hidden';
       } else {
-        todoRef.current.style.opacity = 1;
+        todoRef.current.style.visibility = 'visible';
       }
     }
   }, [todoRef, x, y, hidden]);

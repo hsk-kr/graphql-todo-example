@@ -1,6 +1,10 @@
+#shadow {
+  opacity: 0.3;
+}
+
 .todo {
   position: absolute;
-  opacity: 0;
+  visibility: hidden;
   width: 300px;
   height: 300px;
 

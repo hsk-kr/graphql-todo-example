@@ -23,7 +23,7 @@ import Todo from '../Todo';
 import Loading from '../Loading';
 
 const hideContextMenu = () => {
-  document.querySelector('.todo-board-contextmenu').style.opacity = 0; // hide context menu
+  document.querySelector('.todo-board-contextmenu').style.visibility = 'hidden'; // hide context menu
 };
 
 const TodoBoard = ({ onLogout }) => {
@@ -86,7 +86,7 @@ const TodoBoard = ({ onLogout }) => {
       const { clientX, clientY } = e;
       document.querySelector(`#shadow`).style.left = `${clientX - 150}px`;
       document.querySelector(`#shadow`).style.top = `${clientY}px`;
-      document.querySelector(`#shadow`).style.opacity = 0.3;
+      document.querySelector(`#shadow`).style.visibility = 'visible';
     }
   };
 
@@ -101,7 +101,7 @@ const TodoBoard = ({ onLogout }) => {
         const { clientX, clientY } = event;
         menu.style.left = `${clientX}px`;
         menu.style.top = `${clientY}px`;
-        menu.style.opacity = 1;
+        menu.style.visibility = 'visible';
 
         return false;
       };

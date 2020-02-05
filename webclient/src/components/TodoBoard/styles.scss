@@ -33,7 +33,7 @@
 
 .todo-board-contextmenu {
   position: absolute;
-  opacity: 0;
+  visibility: hidden;
   font-size: 0.9rem;
   width: 200px;
 }
